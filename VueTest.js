@@ -1,15 +1,24 @@
-var vueText;
-var num;
+/**** Vue.js ****/
 
 var vm = new Vue({
   el: '#vueText',
   data: {
     texts: []
+  },
+  methods: {
+    changeText: function (text) {
+      this.texts = text;
+    }
   }
 })
 
+/**** p5.js ****/
+
+var vueText;
+var num;
+
 function setup() {
-  createCanvas(600, 480);
+  createCanvas(600, 480).parent('canvas');
   num = 0;
   vueText = [];
   vueText[0] = ">you: ";
@@ -43,7 +52,7 @@ function response() {
       response = "Can't understand!"
   }
   vm.texts = [];
-  vm.texts[0] = response;
+  vm.changeText([response]);
   vueText[++num] = response;
   vueText[++num] = ">you: ";
   updateTerminal();
