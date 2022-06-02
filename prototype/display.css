@@ -1,0 +1,150 @@
+
+body{
+  background-color: black;
+}
+
+.main{
+  position: absolute;
+  top: 0;
+  height: 0;
+  background-color:whitesmoke;
+  width: 100%;
+  height: 100%;
+}
+
+h2 {
+  text-align:center;
+}
+
+/* カメラ部分 */
+.reader {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+}
+
+.camera_button{
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: fill;
+  background:none;
+  border:0;
+  cursor: pointer;
+}
+.inline-block{
+  display:inline-block;
+}
+
+.reader_video {
+  background-color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  object-fit: fill;
+}
+
+.reader h2 {
+  color: black;
+  background-color: white;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ログイン部分 */
+.login {
+  position: relative;
+  color: white;
+  padding: 0 0;
+  background: #b60081;
+  text-align:center;
+}
+
+.login_display_button {
+  background:none;
+  border:0;
+  text-align:left;
+  cursor: pointer;
+}
+
+.login_button {
+  border:0;
+  text-align:left;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* 読み取った情報とデータベースを照会した結果を示す部分 */
+.default {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+  background-color: white;
+}
+
+/* ユーザーごとに表示される場所が変わる部分 */
+.option{
+  margin: 20px;
+  margin-top: 20px;
+  position: relative;
+  padding: 20px;
+  background: white;
+  color: #000000;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+}
+.option:before {
+  position: absolute;
+  content: '';
+  top: -50px;
+  left: 30px;
+  border: 30px solid transparent;
+  border-bottom: 30px solid white;
+  width: 0;
+  height: 0;
+}
+
+/* おすすめ商品 */
+.coupon {
+  position: relative;
+  padding: 0.5em 0.7em;
+  background: #fbeea0;
+  color: #000000;
+  font-weight: bold;
+}
+.coupon p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* アレルギーの表示 */
+.allergy {
+  position: relative;
+  margin-top: 20px;
+  padding: 0.5em 0.7em;
+  background: #ffdcdc;
+  text-align:center;
+}
+.allergy .allergy_title {
+  font-size: 1.2em;
+  background: #f65858;
+  padding: 0.5em 0.7em;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.allergy p {
+  padding: 15px 20px;
+  margin: 0;
+}

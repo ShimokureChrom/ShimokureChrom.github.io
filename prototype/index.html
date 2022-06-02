@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="library/jsQR.js"></script>
+    <script src="library/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="display.css">
+    <title>＋CONNECT</title>
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- ログイン関連(class:login) -->
+
+        <div class="login" id="login_display">
+            <button class="login_display_button" v-on:click="click_display_button"><img v-bind:src="display_button"></button>
+            <div class="login_display" v-bind:style="{display: (display ? '' : 'none')}">
+                {{ display_user_name }}<br>
+                <div v-bind:style="{display: (login ? 'none' : '')}">
+                    <input type="text" v-model="login_name" placeholder="ユーザー名"><br>
+                    <input type="text" v-model="login_password" placeholder="パスワード">
+                </div>
+                <button class="login_button" v-on:click="click_login_button"> {{ login_button }} </button>
+            </div>
+        </div>
+
+        <!-- 読み取った文字列の表示(class:read_data) -->
+
+        <div id="read_data" class="read_data">
+            <div id="barcode-scanner"></div>
+            <div style="display: none;">
+                {{ qr_data }}
+            </div>
+        </div>
+
+        <!-- 読み取った情報をデータベースと照らし合わせ、見つかれば表示(class:default) -->
+
+        <div id="display" class="default" v-bind:style="{display: (display ? '' : 'none')}">
+            <h2>商品情報</h2>
+            <ul style="list-style:none">
+                <li>商品名　　：{{ name }}</li>
+                <li>生産者　　：{{ manufacturer }}</li>
+                <li>賞味期限　：{{ limit }}</li>
+                <li>アレルギー：<a v-for="item in allergy">{{ item }}　</a>
+                </li>
+        </div>
+
+        <!-- ユーザーごとに表示する情報(class:option) -->
+
+        <div id="option_display" class="option" v-bind:style="{display: (isDisplay ? '' : 'none')}">
+            <!-- クーポン(class:coupon) -->
+            <div class="coupon" v-bind:style="{display: (coupon.display ? '' : 'none')}">
+                <h2>使えるクーポン</h2>
+                <ul v-for="item in isCoupon">
+                    <li>{{ item }}</li>
+                </ul>
+            </div>
+
+            <!-- アレルギー(class:coupon) -->
+            <div class="allergy" v-bind:style="{display: (allergy.display ? '' : 'none')}">
+                <h2>アレルギー情報</h2>
+                {{ isAllergy }}
+            </div>
+        </div>
+
+        <!-- 読み取り関連(class:reader) -->
+
+        <div class="reader" id="reader">
+            <video id="js-video" class="reader_video" autoplay playsinline v-bind:style="{display: (camera_on ? '' : 'none')}"></video>
+            <!-- カメラからの映像をここに表示 -->
+            <div style="display:none">
+                <canvas class="canvas" id="js-canvas"></canvas>
+            </div>
+            <h2>{{instruction}}</h2>
+            <button class="camera_button" v-on:click="click_button"><img v-bind:src="button"></button><br><br>
+        </div>
+    </div>
+    </div>
+
+    <!-- jsの読み込み -->
+
+    <script type="text/javascript" src="js/DATABASE.js"></script>
+    <script type="text/javascript" src="js/display.js"></script>
+    <script type="text/javascript" src="js/reader.js"></script>
+</body>
+</html>
